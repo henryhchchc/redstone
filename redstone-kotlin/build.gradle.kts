@@ -21,9 +21,9 @@ kotlin {
                 jvmTarget = "11"
             }
         }
-        withJava()
         testRuns {
-            named("test") {
+            @Suppress("UNUSED_VARIABLE")
+            val test by getting {
                 executionTask {
                     useJUnitPlatform()
                 }
