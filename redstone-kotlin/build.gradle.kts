@@ -1,9 +1,10 @@
 plugins {
     kotlin("multiplatform") version "1.6.10"
+    `maven-publish`
 }
 
-//group = "net.henryhc.redstone"
-//version = "1.0-SNAPSHOT"
+group = "net.henryhc.redstone"
+version = parent!!.version
 
 repositories {
     mavenCentral()
@@ -46,5 +47,18 @@ kotlin {
 
         val jvmMain by getting
         val jvmTest by getting
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/henryhchchc/redstone")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
