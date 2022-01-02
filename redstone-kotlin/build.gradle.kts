@@ -39,6 +39,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib"))
+                implementation("io.arrow-kt:arrow-core:1.0.1")
                 implementation("com.squareup.okio:okio:3.0.0")
             }
         }
