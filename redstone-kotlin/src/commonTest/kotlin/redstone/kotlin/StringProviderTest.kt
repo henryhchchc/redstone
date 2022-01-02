@@ -1,4 +1,4 @@
-package net.henryhc.redstone
+package redstone.kotlin
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

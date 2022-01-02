@@ -1,4 +1,4 @@
-package net.henryhc.redstone
+package redstone.kotlin
 
 /**
  * A placeholder class to test project building
