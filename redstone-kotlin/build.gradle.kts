@@ -15,9 +15,6 @@ kotlin {
     *  To find out how to configure the targets, please follow the link:
     *  https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#setting-up-targets */
 
-    macosArm64()
-    linuxX64()
-
     jvm {
         compilations.all {
             kotlinOptions {
@@ -44,7 +41,6 @@ kotlin {
             }
         }
         val commonTest by getting {
-            dependsOn(commonMain)
             dependencies {
                 implementation(kotlin("test"))
             }
@@ -54,7 +50,6 @@ kotlin {
             dependsOn(commonMain)
         }
         val jvmTest by getting {
-            dependsOn(jvmMain)
             dependsOn(commonTest)
         }
     }
