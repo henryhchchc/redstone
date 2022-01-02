@@ -15,6 +15,8 @@ kotlin {
     *  To find out how to configure the targets, please follow the link:
     *  https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#setting-up-targets */
 
+    macosArm64()
+    linuxX64()
 
     jvm {
         compilations.all {
@@ -37,16 +39,23 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib"))
+                implementation("com.squareup.okio:okio:3.0.0")
             }
         }
         val commonTest by getting {
+            dependsOn(commonMain)
             dependencies {
                 implementation(kotlin("test"))
             }
         }
 
-        val jvmMain by getting
-        val jvmTest by getting
+        val jvmMain by getting {
+            dependsOn(commonMain)
+        }
+        val jvmTest by getting {
+            dependsOn(jvmMain)
+            dependsOn(commonTest)
+        }
     }
 }
 
